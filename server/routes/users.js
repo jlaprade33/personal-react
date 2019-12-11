@@ -18,8 +18,8 @@ router.post('/sendEmail', async function(req, res, next) {
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-       user: content-blocked,
-       pass: content-blocked
+       user: "content-blocked",
+       pass: "content-blocked"
     }
   })
 
