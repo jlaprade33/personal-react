@@ -13,16 +13,15 @@ router.post('/sendEmail', async function(req, res, next) {
   const message = emailInfo.info
 
   // let testAccount = await nodemailer.createTestAccount();
-
   let transport = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-       user: "kennith.bode@ethereal.email",
-       pass: "6epWzvdfzhwyck6r8Q"
+        user: "kennith.bode@ethereal.email",
+        pass: "6epWzvdfzhwyck6r8Q"
     }
   })
-
+  
   let info = await transport.sendMail(message, function(err, info) {
     if (err) {
       console.log(err)
@@ -30,10 +29,10 @@ router.post('/sendEmail', async function(req, res, next) {
       console.log(info);
     }
   })
-
+  
   console.log('Info', info)
-
-  res.send('Email sent.');
+  res.send('Email sent.', info);
+  
 });
 
 module.exports = router;

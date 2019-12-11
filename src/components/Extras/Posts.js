@@ -293,7 +293,7 @@ class Posts extends Component {
                             key={post.id}
                         />
                     ))
-                }
+                } 
             </div>
         </div>
     );

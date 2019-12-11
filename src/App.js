@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Toolbar from "@material-ui/core/Toolbar";
 import './App.css';
 import MainPage from './components/MainPage/MainPage';
-import Academics from './components/Academics/Academics';
+import Academics from './components/Academics/components/Academics';
 import Contact from './components/Contact/Contact';
 import Podcasts from './components/Extras/Podcasts';
 import Posts from './components/Extras/Posts';
@@ -39,16 +39,16 @@ class App extends Component {
         <Route path='/' exact render={() => 
           <MainPage /> }
         />
-        <Route path='/academics' exact render={() => 
+        <Route path='/academics' render={() => 
           <Academics /> }
         />
-        <Route path='/podcasts' exact render={() => 
+        <Route path='/podcasts' render={() => 
           <Podcasts /> }
         />
-        <Route path='/feed' exact render={() => 
+        <Route path='/feed' render={() => 
           <Posts /> }
         />
-         <Route path='/contact' exact render={() => 
+         <Route path='/contact' render={() => 
           <Contact /> }
         />
        </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withStyles, Button, TextField } from "@material-ui/core"
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { WSASERVICE_NOT_FOUND } from 'constants';
 
 const styles = theme => ({
     main: {
@@ -98,7 +99,7 @@ class Contact extends Component {
         })
      }
  
-    sendEmail = () => {
+    sendEmail = async() => {
         console.log('email sent!')
 
         let message = {
@@ -112,7 +113,22 @@ class Contact extends Component {
             method: 'POST',
             body: JSON.stringify({ info: message }),
             headers: { 'Content-Type': 'application/json'}
+        }).then(data => {
+            data.json()
+        }).then(data => {
+            this.setState({
+                info: data
+            })
+        }).catch(err => console.log('err', err))
+
+        404 Not found
+
+        let input = await fetch('users/sendEmail', {
+            method: 'POST',
+            body: JSON.stringify({ info: message }),
+            headers: { 'Content-Type': 'application/json'}
         })
+        let info = input.json()
     };
 
   render() {

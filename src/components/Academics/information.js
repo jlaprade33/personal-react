@@ -83,26 +83,25 @@ const styles = theme => ({
     
 })
 
-
-function mapper(content) {
-    return (
-        content.map(content => {
-            <div className={ classes.style }>
-                <div className={ classes.descriptionLeft }> { content.description } </div>
-                <div className={ classes.leftTable }>
-                    <p className={classes.contents}>{ content.title } </p>
-                    <p>{ content.classes }</p>
-                </div>
-            </div> 
-        })
-    )
-}
-
 class AcademicPage extends Component {
     render(){   
         const { classes, content } = this.props;
         return (
-            mapper(this.props.content)
+            <div>
+                {
+                    content.slice(0)
+                        .reverse()
+                        .map(schools => {
+                            <div className={ classes.style }>
+                                <div className={ classes.descriptionLeft }> { schools.description } </div>
+                                <div className={ classes.leftTable }>
+                                    <p className={ classes.contents }>{ schools.title } </p>
+                                    <p>{ schools.classes }</p>
+                                </div>
+                            </div> 
+                        })
+                }
+            </div>
         );
     }
 }
