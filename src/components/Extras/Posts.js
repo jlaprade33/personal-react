@@ -269,7 +269,7 @@ class Posts extends Component {
                                 buttonText='Choose image'
                                 className={classes.inputFile}
                                 onChange={this.onDrop}
-                                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
                                 maxFileSize={5242880}
                             />
                             <Button variant="contained" className={classes.submit} onClick={this.submitAll}>
