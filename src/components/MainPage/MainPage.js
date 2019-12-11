@@ -71,7 +71,7 @@ const styles = theme => ({
         position: 'relative',
         boxShadow: '2px 2px 2px 0px black',
         [theme.breakpoints.down('xs')]:{
-            maxHeight: 150,
+            maxHeight: 200,
         },
         [theme.breakpoints.up('sm')]:{
             maxHeight: 500,
