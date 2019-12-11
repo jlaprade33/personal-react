@@ -1,4 +1,4 @@
-import Academics from './components/Academics'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from "@material-ui/core"
 
@@ -85,21 +85,22 @@ const styles = theme => ({
 
 class AcademicPage extends Component {
     render(){   
-        const { classes, content } = this.props;
+        const { classes } = this.props;
+        const content = this.props.content;
         return (
             <div>
                 {
                     content.slice(0)
                         .reverse()
-                        .map(schools => {
-                            <div className={ classes.style }>
+                        .map(schools => (
+                            <div className={ classes.left }>
                                 <div className={ classes.descriptionLeft }> { schools.description } </div>
                                 <div className={ classes.leftTable }>
                                     <p className={ classes.contents }>{ schools.title } </p>
                                     <p>{ schools.classes }</p>
                                 </div>
                             </div> 
-                        })
+                        ))
                 }
             </div>
         );
