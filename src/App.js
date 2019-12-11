@@ -3,6 +3,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import './App.css';
 import MainPage from './components/MainPage/MainPage';
 import Academics from './components/Academics/Academics';
+import Contact from './components/Contact/Contact';
 import Podcasts from './components/Extras/Podcasts';
 import Posts from './components/Extras/Posts';
 import AppBar from '@material-ui/core/AppBar';
@@ -46,6 +47,9 @@ class App extends Component {
         />
         <Route path='/feed' exact render={() => 
           <Posts /> }
+        />
+         <Route path='/contact' exact render={() => 
+          <Contact /> }
         />
        </div>
       </HashRouter>
