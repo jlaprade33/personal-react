@@ -10,7 +10,8 @@ const styles = theme => ({
         margin: 'auto',
         fontFamily: "Courier new",
         backgroundColor: "#d7e3f5",
-        paddingTop: 50
+        paddingTop: 50,
+        minHeight: 800
     },
     content: {
         padding: '30px 10px 10px 10px',
