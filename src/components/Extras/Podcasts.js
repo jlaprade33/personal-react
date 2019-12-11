@@ -56,7 +56,6 @@ const styles = theme => ({
         minHeight: 300,
         [theme.breakpoints.down('xs')]:{
             width: '100%',
-            marginTop: '20%',
         },
         [theme.breakpoints.up('sm')]:{
             width: '90%',
