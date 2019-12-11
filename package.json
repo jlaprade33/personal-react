@@ -22,8 +22,8 @@
     "react-table": "^7.0.0-rc.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start:all": "npm run build && cd server && npm start",
+    "start": "npm run build && cd server && npm start",
+    "start:dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
