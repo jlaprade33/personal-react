@@ -6,9 +6,9 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/userInfo', function(req, res, next) {
-  let userInfo = req.body;
-  console.log('req.body', userInfo);
+router.post('/sendEmail', function(req, res, next) {
+  let emailInfo = req.body;
+  console.log('req.body', emailInfo);
   res.send(req.body);
 });
 

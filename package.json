@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000/",
   "dependencies": {
     "@material-ui/core": "^4.7.2",
     "@material-ui/icons": "^4.5.1",
@@ -17,7 +18,8 @@
     "react-dom": "^16.8.6",
     "react-images-upload": "^1.2.7",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-table": "^7.0.0-rc.8"
   },
   "scripts": {
     "start": "react-scripts start",

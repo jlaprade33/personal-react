@@ -11,6 +11,7 @@ const generateKey = () => {
     return Math.random()*100
 }
 
+//sample to populate feed when opened
 const example = {
     user: {
         username: 'jlaprade',
@@ -21,6 +22,7 @@ const example = {
     id: generateKey()
 }
 
+//sample to populate feed when opened
 const example2 = {
     user: {
         username: 'antarctic123',

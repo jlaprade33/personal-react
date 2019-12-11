@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles } from "@material-ui/core"
+import { withStyles, Button } from "@material-ui/core"
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -9,40 +9,66 @@ const styles = theme => ({
         width: '100%',
         margin: 'auto',
         fontFamily: "Courier new",
+        backgroundColor: "#d7e3f5",
+        paddingTop: 50
     },
-    mendozaTable: {
-        padding: '2% 2% 2% 3%',
-        height: 250,
+    content: {
+        padding: '30px 10px 10px 10px',
+        boxShadow: '0.5px 0.5px 0.5px 0px',
         margin: 'auto',
-        display: 'table',
-        border: '2px solid black',
-        [theme.breakpoints.down('xs')]:{
-            width: '80%'
-        },
-        [theme.breakpoints.up('sm')]:{
-            width: '40%', 
-        },
+        width: '60%',
+        borderRadius: 5,
+        backgroundColor: "#B5C4E2"
     },
-    descriptionMendoza: {
-        padding: '4% 2% 2% 2%',
-        width: '65%',            
+    title: {
         margin: 'auto',
-        [theme.breakpoints.down('xs')]:{
-            width: '80%',
-        },
-        [theme.breakpoints.up('sm')]:{
-            width: '65%',
-        },
+        textAlign: 'center',
+        width: '100%'
     },
+    submitButton: {
+        color: "#B5C4E2",
+        backgroundColor: "#25274b",
+        textAlign: 'center',
+        fontFamily: "Courier new",
+        margin: 'auto',
+        fontWeight: 'bold'
+    },
+    buttonDiv: {
+        margin: 'auto',
+        width: 'fit-content'
+    }
     
 })
 
 class Contact extends Component {
+    constructor() {
+        super();
+        this.state = { 
+            emailAddress: "",
+            name: "",
+            message: ""
+        }
+    };
+
+    sendEmail = async() => {
+        console.log('email sent!')
+        await fetch('sendEmail', {
+            method: 'POST',
+            body: JSON.stringify({ info:'test' }),
+            headers: { 'Content-Type': 'application/json'}
+        })
+    };
+
   render() {
       const { classes } = this.props;
         return (
             <div className={classes.main}>
-                STUFF
+                <div className={classes.content}>
+                    <h4 className={classes.title}>Contact me!</h4><br></br>
+                    <div className={classes.buttonDiv}>
+                        <Button className={classes.submitButton} onClick={this.sendEmail}>Send Email</Button>
+                    </div>
+                </div>
             </div>
         )
     }

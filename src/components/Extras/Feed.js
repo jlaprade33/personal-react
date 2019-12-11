@@ -84,7 +84,6 @@ class Feed extends Component {
                     <div>
                         <img className={classes.postImage} src={image ? image: Mendoza} alt="pic"/>
                     </div>
-                   
                     <div className={classes.caption}>
                         <Fab aria-label="like">
                             <FavoriteIcon />
