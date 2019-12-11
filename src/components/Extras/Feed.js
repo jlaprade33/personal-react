@@ -62,10 +62,6 @@ const styles = theme => ({
 })
 
 class Feed extends Component {
-    constructor(props){
-        super(props);
-    }
-
     render() {
         const { classes } = this.props;
         const username = this.props.username;
