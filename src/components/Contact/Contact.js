@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import { withStyles, Button, TextField } from "@material-ui/core"
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { WSASERVICE_NOT_FOUND } from 'constants';
 
 const styles = theme => ({
     main: {
-        minHeight: 600,
+        minHeight: 800,
         width: '100%',
         margin: 'auto',
         fontFamily: "Courier new",
         backgroundColor: "#d7e3f5",
         paddingTop: 50,
-        minHeight: 800
     },
     content: {
         padding: '30px 10px 10px 10px',
@@ -113,22 +111,8 @@ class Contact extends Component {
             method: 'POST',
             body: JSON.stringify({ info: message }),
             headers: { 'Content-Type': 'application/json'}
-        }).then(data => {
-            data.json()
-        }).then(data => {
-            this.setState({
-                info: data
-            })
-        }).catch(err => console.log('err', err))
-
-        404 Not found
-
-        let input = await fetch('users/sendEmail', {
-            method: 'POST',
-            body: JSON.stringify({ info: message }),
-            headers: { 'Content-Type': 'application/json'}
         })
-        let info = input.json()
+        
     };
 
   render() {
