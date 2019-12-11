@@ -147,7 +147,7 @@ class Posts extends Component {
         this.state = {
             posts: [example, example2],
             user: "",
-            showModal: true,
+            showModal: false,
             userTyped: "",
             captionTyped: "",
             pictures: []
