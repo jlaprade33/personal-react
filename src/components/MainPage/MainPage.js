@@ -70,6 +70,12 @@ const styles = theme => ({
         zIndex: 10,
         position: 'relative',
         boxShadow: '2px 2px 2px 0px black',
+        [theme.breakpoints.down('xs')]:{
+            maxHeight: 150,
+        },
+        [theme.breakpoints.up('sm')]:{
+            maxHeight: 500,
+        },
     },
     rowTitle: {
         width: 'fit-content',
