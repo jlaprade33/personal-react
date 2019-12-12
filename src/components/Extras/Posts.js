@@ -302,4 +302,4 @@ Posts.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Posts);
+export default withStyles(styles)(Posts)
