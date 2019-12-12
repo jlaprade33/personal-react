@@ -21,6 +21,7 @@ const content = [
             "-Cognitive Science",
             "-Data Mining",
         ],
+        key: 1
     },
     {
         id: "CU1",
@@ -30,6 +31,7 @@ const content = [
             "-Data Structures",
             "-Discrete Structures" 
         ],
+        key: 2
     },
     {
         id: "Mendoza",
@@ -40,7 +42,8 @@ const content = [
             "-Ecology", 
             "-Financial Mathematics",
             "-Argentine Literature"
-        ]
+        ],
+        key: 3
     },
     {
         id: "Denver",
@@ -55,7 +58,8 @@ const content = [
             "-Accounting" ,
             "-Marketing" ,
             "-Management"
-        ]
+        ],
+        key: 4
     },
 ]
 

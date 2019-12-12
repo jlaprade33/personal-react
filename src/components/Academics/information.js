@@ -17,18 +17,17 @@ const styles = theme => ({
     },
     right: {
         padding: '3% 2% 3% 2%',
-        minHeight: 500,
-        width: '100%',
-        margin: 'auto',
-        backgroundColor: "#B5C4E2",
         display: 'inline-flex',
         flexFlow: 'row',
         flexWrap: 'wrap',
+        width: '100%',
+        paddingTop: '4%',
+        backgroundColor: "#B5C4E2",
+
     },
     leftTable: {
         padding: '3% 2% 2% 3%',
         minHeight: 300,
-        float: 'right',
         display: 'table',
         border: '2px solid black',
         [theme.breakpoints.down('xs')]:{
@@ -41,9 +40,8 @@ const styles = theme => ({
         },
     },
     rightTable: {
-        padding: '2% 2% 2% 3%', 
-        float: 'left',
-        display: 'table-flex',
+        padding: '3% 2% 2% 3%', 
+        display: 'table',
         border: '2px solid black',
         [theme.breakpoints.down('xs')]:{
             width: '90%',
@@ -55,7 +53,6 @@ const styles = theme => ({
         },
     },
     descriptionLeft: {
-        float: 'left',
         marginLeft: '5%',
         paddingBottom: '4%',
         [theme.breakpoints.down('xs')]:{
@@ -69,7 +66,6 @@ const styles = theme => ({
         },
     },
     descriptionRight: {
-        float: 'right',
         marginRight: '2%',
         [theme.breakpoints.down('xs')]:{
             width: '80%',
@@ -84,24 +80,57 @@ const styles = theme => ({
 })
 
 class AcademicPage extends Component {
-    render(){   
+    constructor(props){
+        super(props);
+    }
+
+    flipStyles = () => {
+        console.log('inside flips')
+       this.state.side === 'left' ? this.setState({side: 'right'}) : this.setState({side: 'left'})
+    }
+
+    render(){  
+        let mapCount = 0;
+
         const { classes } = this.props;
         const content = this.props.content;
+
+        //after each mapping, update count so sides are switched
+        const mapCounter = () => {
+            mapCount += 1
+        }
+
         return (
             <div>
                 {
                     content.slice(0)
-                        .reverse()
-                        .map(schools => (
-                            <div className={ classes.left }>
-                                <div className={ classes.descriptionLeft }> { schools.description } </div>
-                                <div className={ classes.leftTable }>
-                                    <p className={ classes.contents }>{ schools.title } </p>
-                                    <p>{ schools.classes }</p>
+                    .reverse()
+                    .map(schools => (
+                        mapCount%2 === 0 ? (
+                                <div className={ classes.left }>
+                                    <div className={ classes.descriptionLeft }> { schools.description } </div>
+                                    <div className={ classes.leftTable }>
+                                        <p className={classes.schools}>{ schools.title } </p>
+                                        <p>{ schools.classes }</p>
+                                    </div>
+                                    { mapCounter() } 
                                 </div>
-                            </div> 
-                        ))
+                            ) : 
+                            (
+                                <div className={ classes.right }>   
+                                    <div className={ classes.rightTable }>
+                                        <p className={classes.schools}>{ schools.title }</p>
+                                        <p>{ schools.classes }</p>
+                                    </div>
+                                    <div className={ classes.descriptionRight }> { schools.description } </div>
+                                    { mapCounter() }
+                                </div>
+                            )
+                        )
+                    )
+                    
                 }
+                
             </div>
         );
     }
@@ -136,3 +165,12 @@ export default withStyles(styles)(AcademicPage);
 //     )
 //     count += 1;
 // })
+
+
+// <div className={ changeSides('top') }>
+// <div className={ changeSides('description') }> { schools.description } </div>
+// <div className={ changeSides('table') }>
+//     <p className={ classes.schools }>{ schools.title } </p>
+//     <p>{ schools.classes }</p>
+// </div>
+// </div> 
