@@ -28,6 +28,7 @@ const content = [
         description: "After resigning from my position as an Analyst, I enrolled in the Data Structures and Discrete Structures courses at Boulder through the continuing education system in the Fall of 2017. I skipped the intro to programming course, without having taken prior programming classes, so I could jump into these courses and get the ball rolling. Shortly after enrolling, I found the Post-Bacc Bachelor's degree option outlined below, that was going to begin the following semester. After completing Data and Discrete Structures, the courses transferred into the Post-Bacc Program I finished in December of 2018. ",
         title: "University of Colorado Boulder",
         classes: [
+            "Completed Coursework:",
             "-Data Structures",
             "-Discrete Structures" 
         ],
@@ -38,6 +39,7 @@ const content = [
         description: "During my 2015-2016 academic year at the University of Denver, I studied abroad through animmersive Spanish program in Mendoza, Argentina. Through this program,I was able to take classes at local schools, assimilate into the culture, and gain a proficiency Spanish (of the Argentinian dialect).",
         title: "Universidad de Congreso",
         classes: [
+            "Completed Coursework:",
             "-Psychology",
             "-Ecology", 
             "-Financial Mathematics",
@@ -53,6 +55,7 @@ const content = [
             "Major: Finance",
             "Minor: Spanish",
             "GPA: 3.61",
+            "Completed Coursework:",
             "-Business Analytics and Information",
             "-Financial Statements" ,
             "-Accounting" ,

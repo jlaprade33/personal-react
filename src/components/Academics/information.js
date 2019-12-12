@@ -30,6 +30,7 @@ const styles = theme => ({
         minHeight: 300,
         display: 'table',
         border: '2px solid black',
+        marginBottom: '2%',
         [theme.breakpoints.down('xs')]:{
             width: '87%',
             margin: 'auto'
@@ -37,6 +38,7 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]:{
             width: '45%',
             marginLeft: '4%',
+            marginTop: '4%'
         },
     },
     rightTable: {
@@ -76,13 +78,12 @@ const styles = theme => ({
             marginLeft: '5%'
         },
     },
-    
+    innerPs: {
+       marginBottom: 0
+    }
 })
 
 class AcademicPage extends Component {
-    constructor(props){
-        super(props);
-    }
 
     flipStyles = () => {
         console.log('inside flips')
@@ -111,7 +112,9 @@ class AcademicPage extends Component {
                                     <div className={ classes.descriptionLeft }> { schools.description } </div>
                                     <div className={ classes.leftTable }>
                                         <p className={classes.schools}>{ schools.title } </p>
-                                        <p>{ schools.classes }</p>
+                                            { 
+                                                (schools.classes).map(courses => <p className={classes.innerPs}>{ courses }</p> )
+                                            }
                                     </div>
                                     { mapCounter() } 
                                 </div>
@@ -120,7 +123,9 @@ class AcademicPage extends Component {
                                 <div className={ classes.right }>   
                                     <div className={ classes.rightTable }>
                                         <p className={classes.schools}>{ schools.title }</p>
-                                        <p>{ schools.classes }</p>
+                                            { 
+                                                (schools.classes).map(courses => <p className={classes.innerPs}>{ courses }</p> )
+                                            }
                                     </div>
                                     <div className={ classes.descriptionRight }> { schools.description } </div>
                                     { mapCounter() }
