@@ -84,7 +84,6 @@ const styles = theme => ({
 })
 
 class AcademicPage extends Component {
-
     flipStyles = () => {
         console.log('inside flips')
        this.state.side === 'left' ? this.setState({side: 'right'}) : this.setState({side: 'left'})
@@ -92,15 +91,12 @@ class AcademicPage extends Component {
 
     render(){  
         let mapCount = 0;
-
         const { classes } = this.props;
         const content = this.props.content;
-
         //after each mapping, update count so sides are switched
         const mapCounter = () => {
             mapCount += 1
         }
-
         return (
             <div>
                 {
@@ -132,10 +128,8 @@ class AcademicPage extends Component {
                                 </div>
                             )
                         )
-                    )
-                    
+                    )   
                 }
-                
             </div>
         );
     }
@@ -146,36 +140,3 @@ AcademicPage.propTypes = {
 };
 
 export default withStyles(styles)(AcademicPage);
-
-
-
-// const content = content.map(content => {
-//     count === 0%1 ?  (
-//         <div className={ classes.style }>
-//         <div className={ classes.descriptionLeft }> { content.description } </div>
-//         <div className={ classes.leftTable }>
-//             <p className={classes.contents}>{ content.title } </p>
-//             <p>{ content.classes }</p>
-//         </div>
-//     </div>
-//     ) :
-//     (
-//         <div className={ classes.right }>   
-//             <div className={ classes.rightTable }>
-//                 <p className={classes.contents}>{ content.title }</p>
-//                 <p>{ content.classes }</p>
-//             </div>
-//             <div className={ classes.descriptionRight }> { content.description } </div>
-//         </div>
-//     )
-//     count += 1;
-// })
-
-
-// <div className={ changeSides('top') }>
-// <div className={ changeSides('description') }> { schools.description } </div>
-// <div className={ changeSides('table') }>
-//     <p className={ classes.schools }>{ schools.title } </p>
-//     <p>{ schools.classes }</p>
-// </div>
-// </div> 
