@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { withStyles, Button, Modal, TextField } from "@material-ui/core"
 import Feed from "./Feed";
 import PropTypes from 'prop-types';
-import Mendoza from "../MainPage/Mendoza.jpg"
-import Denver from "../MainPage/Denver.jpg"
-import ImageUploader from 'react-images-upload'
-import Ice from '../MainPage/ice.jpg'
+import Mendoza from "../MainPage/Mendoza.jpg";
+import Denver from "../MainPage/Denver.jpg";
+import ImageUploader from 'react-images-upload';
+import Ice from '../MainPage/ice.jpg';
 
 const generateKey = () => {
     return Math.random()*100
