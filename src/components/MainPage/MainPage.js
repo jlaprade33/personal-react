@@ -229,15 +229,15 @@ class MainPage extends Component {
                             <div className={classes.rowTitle}>
                                 <div className={classes.titleText} >Academics</div>
                             </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('boulder')}} onMouseOut={() => {this.mouseOut('boulder')}}>
+                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('boulder')}} onMouseLeave={() => {this.mouseOut('boulder')}}>
                                 { this.state.hoverBoulder ? (<div className={classes.innerDivs}>University of Colorado Boulder</div>) : null }
                                 <img className={classes.photos} src={Boulder} alt="logo"/>
                             </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('denver')}} onMouseOut={() => {this.mouseOut('denver')}}>
+                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('denver')}} onMouseLeave={() => {this.mouseOut('denver')}}>
                                 { this.state.hoverDenver ? (<div className={classes.innerDivs}>University of Denver</div>) : null }
                                 <img className={classes.photos} src={Denver} alt="logo"/>
                             </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('mendoza')}} onMouseOut={() => {this.mouseOut('mendoza')}}>
+                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('mendoza')}} onMouseLeave={() => {this.mouseOut('mendoza')}}>
                                 { this.state.hoverMendoza ? (<div className={classes.innerDivs}>Universidad de Congreso</div>) : null }
                                 <img className={classes.photos} src={Mendoza} alt="logo"/>
                             </div> 
