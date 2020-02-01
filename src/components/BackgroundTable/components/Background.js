@@ -10,7 +10,7 @@ const styles = theme => ({
     margin: 'auto',
     padding: '10px 0 10px 0',
     marginBottom: '3%',
-    minHeight: 350,
+    minHeight: 450,
     [theme.breakpoints.down('sm')]:{
       width: '95%',
     },
