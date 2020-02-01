@@ -102,9 +102,9 @@ class AcademicPage extends Component {
                 {
                     content.slice(0)
                     .reverse()
-                    .map(schools => (
+                    .map((schools, index) => (
                         mapCount%2 === 0 ? (
-                                <div className={ classes.left }>
+                                <div key={index} className={ classes.left }>
                                     <div className={ classes.descriptionLeft }> { schools.description } </div>
                                     <div className={ classes.leftTable }>
                                         <p className={classes.schools}>{ schools.title } </p>
@@ -116,7 +116,7 @@ class AcademicPage extends Component {
                                 </div>
                             ) : 
                             (
-                                <div className={ classes.right }>   
+                                <div key={index} className={ classes.right }>   
                                     <div className={ classes.rightTable }>
                                         <p className={classes.schools}>{ schools.title }</p>
                                             { 

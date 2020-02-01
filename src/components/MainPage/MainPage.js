@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { withStyles, Button } from "@material-ui/core"
+import { withStyles, Button } from "@material-ui/core";
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Boulder from "./Boulder.jpg"
-import Mendoza from "./Mendoza.jpg"
-import Denver from "./Denver.jpg"
+import Boulder from "./Boulder.jpg";
+import Mendoza from "./Mendoza.jpg";
+import Denver from "./Denver.jpg";
 import { Link } from 'react-router-dom';
+import Background from  '../BackgroundTable/components/Background';
 
 const styles = theme => ({
     main: {
@@ -219,10 +220,9 @@ class MainPage extends Component {
                 <div className={classes.body}> 
                     <div className={classes.intro}>
                         <p className={classes.name}>Jeff LaPrade</p>
-                        <p className={classes.background}>I am a Developer with experience working in JavaScript, HTML, CSS, 
-                            and more specifically building apps using React and Express. Take a look at my code (this is just a quick sample of what I can do), 
-                            education background, work experience, favorite podcasts, and more...
-                        </p>
+                        <div className={classes.background}>
+                            <Background />
+                        </div>
                     </div>
                     <Link to='/academics' style={{textDecoration: 'none', color:"black"}}>
                         <div className={classes.academics}>  
