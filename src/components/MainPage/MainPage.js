@@ -24,10 +24,10 @@ const styles = theme => ({
         width: '100%',
         minHeight: 100,
         textAlign: 'center',
-        fontSize: 42,
-        fontWeight: 500,
-        paddingTop: '10%',
-        color: 'black'
+        fontSize: 48,
+        fontWeight: 400,
+        padding: '6% 0 3% 0',
+        color: '#696969'
     },
     background: {
         width: '100%',
