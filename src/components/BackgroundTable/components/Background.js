@@ -20,7 +20,12 @@ const styles = theme => ({
   },
   contentContainer: {
     display:'inline-flex',
-    width: '90%',
+    [theme.breakpoints.down('sm')]:{
+      width: '100%',
+    },
+    [theme.breakpoints.up('md')]:{
+      width: '90%',
+    }
   },
   contentTitle: {
     width: '90%',
@@ -81,7 +86,7 @@ const styles = theme => ({
     margin: 'auto',
     textAlign: 'center',
     minHeight: 40,
-    margin: '10px 40px 0 40px',
+    margin: '10px 20px 0 20px',
     borderBottom: '3px solid #25274b'
   },
   innerContent: {
