@@ -63,11 +63,8 @@ const styles = theme => ({
 
 class Feed extends Component {
     render() {
-        const { classes } = this.props;
-        const username = this.props.username;
-        const avatar = this.props.avatar;
-        const image = this.props.image;
-        const caption = this.props.caption;
+        const { classes, username, avatar, image, caption } = this.props;
+       
         return (
             <div className={classes.main}>
                 <article className={classes.post}>

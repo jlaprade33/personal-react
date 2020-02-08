@@ -19,7 +19,11 @@
     "react-images-upload": "^1.2.7",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
-    "react-table": "^7.0.0-rc.8"
+    "react-table": "^7.0.0-rc.8",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
+    "reduxsauce": "^1.1.2",
+    "seamless-immutable": "^7.1.4"
   },
   "scripts": {
     "start": "npm run build && cd server && npm start",
