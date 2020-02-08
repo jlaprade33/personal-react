@@ -313,4 +313,7 @@ const mapDispatchToProps = ( dispatch ) => ({
     fetchingPosts: posts => dispatch(ActionTypes.loadPostData)
 })
 
-export default withStyles(styles)(Posts);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(withStyles(styles)(Posts));
