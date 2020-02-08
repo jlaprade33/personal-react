@@ -11,7 +11,7 @@ export const ActionTypes = Types;
 export default Creators;
 
 export const INITIAL_STATE = Immutable({
-    posts: [],
+    allPosts: [],
     data: [],
     error: null,
     fetching: false
@@ -27,7 +27,7 @@ export const addPostData = (state, { key, data }) => {
 
     return ({ 
         ...state,
-        posts: ...newPost,
+        allPosts: ...newPost,
         fetching: false
     })
 };

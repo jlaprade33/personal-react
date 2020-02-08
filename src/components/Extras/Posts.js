@@ -7,6 +7,10 @@ import Denver from "../MainPage/Denver.jpg";
 import ImageUploader from 'react-images-upload';
 import Ice from '../MainPage/ice.jpg';
 
+import ActionTypes from '../../reducers/posts';
+import { connect } from 'react-redux';
+
+
 const generateKey = () => {
     return Math.random()*100
 }
@@ -300,8 +304,13 @@ class Posts extends Component {
   }
 }
 
-Posts.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
+const mapStateToProps = ( state ) => ({
+    data: state.posts.allPosts,
+    changed: state.literals.changed
+})
+
+const mapDispatchToProps = ( dispatch ) => ({
+    fetchingPosts: posts => dispatch(ActionTypes.loadPostData)
+})
 
 export default withStyles(styles)(Posts);
