@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { withStyles, Button } from "@material-ui/core"
+import { withStyles, Button } from "@material-ui/core";
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Boulder from "./Boulder.jpg"
-import Mendoza from "./Mendoza.jpg"
-import Denver from "./Denver.jpg"
+import Boulder from "./Boulder.jpg";
+import Mendoza from "./Mendoza.jpg";
+import Denver from "./Denver.jpg";
 import { Link } from 'react-router-dom';
+import Background from  '../BackgroundTable/components/Background';
 
 const styles = theme => ({
     main: {
@@ -23,10 +24,10 @@ const styles = theme => ({
         width: '100%',
         minHeight: 100,
         textAlign: 'center',
-        fontSize: 42,
-        fontWeight: 500,
-        paddingTop: '10%',
-        color: 'black'
+        fontSize: 48,
+        fontWeight: 400,
+        padding: '6% 0 3% 0',
+        color: '#696969'
     },
     background: {
         width: '100%',
@@ -70,6 +71,12 @@ const styles = theme => ({
         zIndex: 10,
         position: 'relative',
         boxShadow: '2px 2px 2px 0px black',
+        [theme.breakpoints.down('xs')]:{
+            maxHeight: 260,
+        },
+        [theme.breakpoints.up('sm')]:{
+            maxHeight: 500,
+        },
     },
     rowTitle: {
         width: 'fit-content',
@@ -213,25 +220,24 @@ class MainPage extends Component {
                 <div className={classes.body}> 
                     <div className={classes.intro}>
                         <p className={classes.name}>Jeff LaPrade</p>
-                        <p className={classes.background}>I am a Developer with experience working in JavaScript, HTML, CSS, 
-                            and more specifically building apps using React and Express. Take a look at my code (this is just a quick sample of what I can do), 
-                            education background, work experience, favorite podcasts, and more...
-                        </p>
+                        <div className={classes.background}>
+                            <Background />
+                        </div>
                     </div>
                     <Link to='/academics' style={{textDecoration: 'none', color:"black"}}>
                         <div className={classes.academics}>  
                             <div className={classes.rowTitle}>
                                 <div className={classes.titleText} >Academics</div>
                             </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('boulder')}} onMouseOut={() => {this.mouseOut('boulder')}}>
+                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('boulder')}} onMouseLeave={() => {this.mouseOut('boulder')}}>
                                 { this.state.hoverBoulder ? (<div className={classes.innerDivs}>University of Colorado Boulder</div>) : null }
                                 <img className={classes.photos} src={Boulder} alt="logo"/>
                             </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('denver')}} onMouseOut={() => {this.mouseOut('denver')}}>
+                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('denver')}} onMouseLeave={() => {this.mouseOut('denver')}}>
                                 { this.state.hoverDenver ? (<div className={classes.innerDivs}>University of Denver</div>) : null }
                                 <img className={classes.photos} src={Denver} alt="logo"/>
                             </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('mendoza')}} onMouseOut={() => {this.mouseOut('mendoza')}}>
+                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('mendoza')}} onMouseLeave={() => {this.mouseOut('mendoza')}}>
                                 { this.state.hoverMendoza ? (<div className={classes.innerDivs}>Universidad de Congreso</div>) : null }
                                 <img className={classes.photos} src={Mendoza} alt="logo"/>
                             </div> 

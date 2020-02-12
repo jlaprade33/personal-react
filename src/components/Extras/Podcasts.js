@@ -51,12 +51,11 @@ const styles = theme => ({
         flexWrap: 'wrap',
         borderRadius: 20,
         marginBottom: '2%',
-        marginTop: '10%',
+        marginTop: '2%',
         backgroundColor: "#d7e3f5",
         minHeight: 300,
         [theme.breakpoints.down('xs')]:{
             width: '100%',
-            marginTop: '20%',
         },
         [theme.breakpoints.up('sm')]:{
             width: '90%',

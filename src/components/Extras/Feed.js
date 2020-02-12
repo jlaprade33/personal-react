@@ -62,10 +62,6 @@ const styles = theme => ({
 })
 
 class Feed extends Component {
-    constructor(props){
-        super(props);
-    }
-
     render() {
         const { classes } = this.props;
         const username = this.props.username;
@@ -88,7 +84,6 @@ class Feed extends Component {
                     <div>
                         <img className={classes.postImage} src={image ? image: Mendoza} alt="pic"/>
                     </div>
-                   
                     <div className={classes.caption}>
                         <Fab aria-label="like">
                             <FavoriteIcon />
