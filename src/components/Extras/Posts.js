@@ -168,10 +168,6 @@ class Posts extends Component {
         }
     }
 
-    generateKey = () => {
-        return Math.random()*100
-    }
-
     //opens modal
     openModal = () => {
         this.setState({
