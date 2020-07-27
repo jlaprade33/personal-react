@@ -10,7 +10,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "graphql-tag": "^2.10.1",
-    "jpeg-js": "^0.3.6",
+    "jpeg-js": "^0.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
