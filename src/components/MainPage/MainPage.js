@@ -164,7 +164,6 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid white',
         backgroundColor: 'rgba(52, 52, 52, 0.9)',
         textAlign : 'center',
-        transition: '.5s ease',
         [theme.breakpoints.down('xs')]:{
             width: '75%',
             marginBottom: '4%',
