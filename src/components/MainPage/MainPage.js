@@ -200,68 +200,66 @@ const MainPage = () => {
     const [hoverBoulder, setBoulder] = useState(false)
     const [hoverDenver, setDenver] = useState(false)
 
-    const mouseOver = (input) => {
-        if(input === 'boulder'){
-            setBoulder(true)
-        }
-        else if(input === 'mendoza'){
-            setMendoza(true)
-        }
-        if(input === 'denver'){
-            setDenver(true)
+    const hoverAction = (input, val) => {
+        console.log('val', input, val)
+        switch(input){
+            case 'Boulder':
+                setBoulder(val);
+                break;
+            case 'Denver':
+                setDenver(val);
+                break;
+            case 'Mendoza':
+                setMendoza(val);
+                break;
+
         }
     }
 
-    const mouseOut = (input) => {
-        if(input ==='boulder'){
-            setBoulder(false)
-        }
-        else if(input ==='mendoza'){
-            setMendoza(false)
-        }
-        if(input ==='denver'){
-            setDenver(false)
-        }
-    }
-
-        return (
-            <div className={classes.main}>
-                <div className={classes.body}> 
-                    <div className={classes.intro}>
-                        <p className={classes.name}>Jeff LaPrade</p>
-                        <div className={classes.background}>
-                            <Background />
-                        </div>
+    return (
+        <div className={classes.main}>
+            <div className={classes.body}> 
+                <div className={classes.intro}>
+                    <p className={classes.name}>Jeff LaPrade</p>
+                    <div className={classes.background}>
+                        <Background />
                     </div>
-                    <Link to='/academics' style={{textDecoration: 'none', color:"black"}}>
-                        <div className={classes.academics}>  
-                            <div className={classes.rowTitle}>
-                                <div className={classes.titleText} >Academics</div>
-                            </div>
-                            {
-                                schoolInfo.map((location, index) => {
-                                    return(
-                                        <div key={index} className={classes.schools} onMouseOver={() => {mouseOver(location.name)}} onMouseLeave={() => {mouseOut(location.name)}}>
-                                        { hoverBoulder ? (<div className={classes.innerDivs}>{location.title}</div>) : null }
-                                        <img className={classes.photos} src={location.image} alt={location.name}/>
-                                    </div>
-                                    )
-                                })
-                            }    
+                </div>
+                <Link to='/academics' style={{textDecoration: 'none', color:"black"}}>
+                    <div className={classes.academics}>  
+                        <div className={classes.rowTitle}>
+                            <div className={classes.titleText} >Academics</div>
                         </div>
-                    </Link>
-                    <div>
-                        <div className={classes.extras}>
-                            <div className={classes.rowTitle}>
-                                <div className={classes.extrasText} >Extras</div>
-                            </div>
-                            <Link className={classes.link} to='/podcasts' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out my favorite podcasts...</Button></Link>
-                            <Link className={classes.link} to='/feed' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Try out this feed demo... </Button></Link>
-                        </div>
+                        {
+                            schoolInfo.map((location, index) => {
+                                let hoverImage = location.city === 'Boulder' ? hoverBoulder : location.city === 'Denver' ? hoverDenver : hoverMendoza;
+                                return(
+                                    <div 
+                                        key={index} 
+                                        className={classes.schools} 
+                                        onMouseOver={() => {hoverAction(location.city, true)}} 
+                                        onMouseLeave={() => {hoverAction(location.city, false)}}
+                                    >
+                                        { hoverImage ? (<div className={classes.innerDivs}>{location.title}</div>) : null }
+                                    <img className={classes.photos} src={location.image} alt={location.city}/>
+                                </div>
+                                )
+                            })
+                        }    
                     </div>
-                </div> 
-            </div>
-        )
+                </Link>
+                <div>
+                    <div className={classes.extras}>
+                        <div className={classes.rowTitle}>
+                            <div className={classes.extrasText} >Extras</div>
+                        </div>
+                        <Link className={classes.link} to='/podcasts' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out my favorite podcasts...</Button></Link>
+                        <Link className={classes.link} to='/feed' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Try out this feed demo... </Button></Link>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    )
 };
 
 export default MainPage;
