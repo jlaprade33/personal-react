@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { withStyles, Button, Modal, TextField } from "@material-ui/core"
 import Feed from "./Feed";
 import PropTypes from 'prop-types';
-import Mendoza from "../MainPage/Mendoza.jpg";
-import Denver from "../MainPage/Denver.jpg";
 import ImageUploader from 'react-images-upload';
-import Ice from '../MainPage/ice.jpg';
+
+const Ice = 'https://jela-website.s3.us-east-2.amazonaws.com/ice-1.jpg'
+const Denver = 'https://jela-website.s3.us-east-2.amazonaws.com/Denver.jpg'
+const Mendoza = 'https://jela-website.s3.us-east-2.amazonaws.com/Mendoza.jpg'
+const Boulder = 'https://jela-website.s3.us-east-2.amazonaws.com/Boulder.jpg'
 
 const generateKey = () => {
     return Math.random()*100

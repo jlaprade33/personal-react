@@ -4,9 +4,9 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
-import Mendoza from "../MainPage/Mendoza.jpg"
-import Denver from "../MainPage/Denver.jpg"
 
+const Mendoza = 'https://jela-website.s3.us-east-2.amazonaws.com/Mendoza.jpg'
+const Denver = 'https://jela-website.s3.us-east-2.amazonaws.com/Denver.jpg'
 
 const styles = theme => ({
     main: {
