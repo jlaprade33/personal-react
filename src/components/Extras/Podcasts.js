@@ -1,10 +1,45 @@
 import React, { Component } from 'react';
-import { withStyles } from "@material-ui/core"
-import PropTypes from 'prop-types';
+import { makeStyles } from "@material-ui/core"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 
-const styles = theme => ({
+const podcastInfo = [
+    {
+        name: 'The Tim Ferriss Show',
+        link: 'https://tim.blog/podcast/',
+        episodes: [
+            'Sam Kass on Trials by Fire and Cooking for the Obamas',
+            'The Iceman, Wim Hof',
+            'The Tattooed Heretic of Wine and Whiskey',
+            'The Athlete (and Artist) Who Cheats Death, Jimmy Chin',
+            'Thinking about Extra Dimensions with Physicist Lisa Randall',
+            'Meet Scorpion, The Real-Life Santa Claus with an IGQ of 197'
+        ],
+        description: 'Tim Ferriss is known as being one of the best podcast interviewers with his ability to not only find people at the top of their industry (which ranges from successful startup founder, to professional fixer, to astrophysicists) but dissect how they got to where they are and find out what really makes these people unique.'
+    },
+    {
+        name: 'How I Built This',
+        link: "https://www.npr.org/podcasts/510313/how-i-built-this",
+        episodes: [
+            "Lyft: John Zimmer", 
+            "Airbnb: Joe Gebbia ", 
+            "Samuel Adams: Jim Koch", 
+            "Southwest Airlines: Herb Kelleher", 
+            "Patagonia: Yvon Chouinard", 
+            "Real Estate Mogul: Barbara Corcoran", 							
+            "Toms: Blake Mycoskie"
+        ],
+        description: "Stories from company founders on how they got started and found success. Guy Raz does a great job of interviewing these entrepreneurs, who oftentimes start their businesses on accident or as a side product of doing something they love."
+    },
+    {
+        name: 'Y Combinator'
+    },
+    {
+        name: 'The Genius Life'
+    }
+];
+
+const useStyles = makeStyles(theme => ({
     main: {
         minHeight: 600,
         width: '100%',
@@ -130,58 +165,48 @@ const styles = theme => ({
         float: 'right',
         fontSize: 14,
     }
-})
+}));
 
-class Podcasts extends Component {
+const Podcasts = () => {
+    const classes = useStyles();
 
-    hover = () => {
-        console.log('here')
-    }
-
-    render() {
-        const { classes } = this.props;
-        return (
+    return (
             <div className={classes.main}>
                 <div className={classes.body} class="pulse"> 
-                    <a href="https://tim.blog/podcast/" style={{textDecoration: 'none', color: 'black'}}>
-                        <div className={classes.tim} onMouseOver={this.hover}>
-                            <p className={classes.name}>The Tim Ferriss Show</p>
-                            <p className={classes.left}>
-                                #84 Sam Kass on Trials by Fire and Cooking for the Obamas<br></br>
-                                #102 "The Iceman" Wim Hof  <br></br>
-                                #110 The Tattooed Heretic of Wine and Whiskey<br></br> 
-                                #114 The Athlete (and Artist) Who Cheats Death, Jimmy Chin<br></br> 
-                                #115 Thinking about Extra Dimensions with Physicist Lisa Randall<br></br> 
-                                #139 Meet "Scorpion" The Real-Life Santa Claus with an IGQ of 197<br></br> 
-                            </p>
-                            <p className={classes.right}>
-                                Tim Ferriss is known as being one of the best podcast interviewers with
-                                his ability to not only find people at the top of their industry (which 
-                                ranges from successful startup founder, to professional "fixer," to 
-                                astrophysicists) but dissect how they got to where they are and find out
-                                what really makes these people unique.  <br></br> 	
-                            </p>
-                        </div>
-                    </a>
-                    <a href="https://www.npr.org/podcasts/510313/how-i-built-this" style={{textDecoration: 'none', color: 'black'}}>
-                        <div className={classes.built}>  
-                            <p className={classes.name}>How I Built This</p>
-                            <p className={classes.left}>
-                                Lyft: John Zimmer<br></br> 
-                                Airbnb: Joe Gebbia <br></br> 
-                                Samuel Adams: Jim Koch<br></br> 
-                                Southwest Airlines: Herb Kelleher<br></br> 
-                                Patagonia: Yvon Chouinard<br></br> 
-                                Real Estate Mogul: Barbara Corcoran<br></br> 							
-                                Toms: Blake Mycoskie
-                            </p>
-                            <p className={classes.right}>
-                                Stories from company founders on how they got started and found success.
-                                Guy Raz does a great job of interviewing these entrepreneurs, who oftentimes
-                                start their businesses on accident or as a side product of doing something they love.
-                            </p>
-                        </div>
-                    </a>
+                
+                    <div className={classes.tim} onClick={()=> window.location = podcastInfo[0].link}>
+                        <p className={classes.name}>{podcastInfo[0].name}</p>
+                        <p className={classes.left}>
+                            #84 Sam Kass on Trials by Fire and Cooking for the Obamas<br></br>
+                            #102 "The Iceman" Wim Hof  <br></br>
+                            #110 The Tattooed Heretic of Wine and Whiskey<br></br> 
+                            #114 The Athlete (and Artist) Who Cheats Death, Jimmy Chin<br></br> 
+                            #115 Thinking about Extra Dimensions with Physicist Lisa Randall<br></br> 
+                            #139 Meet "Scorpion" The Real-Life Santa Claus with an IGQ of 197<br></br> 
+                        </p>
+                        <p className={classes.right}>
+                            {podcastInfo[0].description}
+                        </p>
+                    </div>
+
+                    <div className={classes.built} onClick={()=> window.location = podcastInfo[0].link}>
+                        <p className={classes.name}> {podcastInfo[1].name}</p>
+                        <p className={classes.left}>
+                            Lyft: John Zimmer<br></br> 
+                            Airbnb: Joe Gebbia <br></br> 
+                            Samuel Adams: Jim Koch<br></br> 
+                            Southwest Airlines: Herb Kelleher<br></br> 
+                            Patagonia: Yvon Chouinard<br></br> 
+                            Real Estate Mogul: Barbara Corcoran<br></br> 							
+                            Toms: Blake Mycoskie
+                        </p>
+                        <p className={classes.right}>
+                        {podcastInfo[1].description}
+                        </p>
+                    </div>
+                
+                  
+                   
                     <a href="https://blog.ycombinator.com/category/podcast/" style={{textDecoration: 'none', color: 'black'}}>
                         <div className={classes.yComb}>
                             <p className={classes.name}>Y Combinator</p>
@@ -215,11 +240,6 @@ class Podcasts extends Component {
                 </div> 
             </div>
         )
-    }
 };
 
-Podcasts.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Podcasts);
+export default Podcasts;
