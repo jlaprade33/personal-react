@@ -32,7 +32,7 @@ class App extends Component {
               <Link to='/' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Home</Button></Link>
               <Link to='/academics' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Academics</Button></Link>
               <Link to='/feed' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Test-Feed</Button></Link>
-              <Link to='/contact' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Contact</Button></Link>
+              {/* <Link to='/contact' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Contact</Button></Link> */}
             </Toolbar>
           </AppBar>
         <div>
@@ -48,9 +48,9 @@ class App extends Component {
         <Route path='/feed' render={() => 
           <Posts /> }
         />
-         <Route path='/contact' render={() => 
+         {/* <Route path='/contact' render={() => 
           <Contact /> }
-        />
+        /> */}
        </div>
       </HashRouter>
     )
