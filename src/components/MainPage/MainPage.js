@@ -1,14 +1,29 @@
-import React, { Component } from 'react';
-import { withStyles, Button } from "@material-ui/core";
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { makeStyles, Button } from "@material-ui/core";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Boulder from "./Boulder.jpg";
-import Mendoza from "./Mendoza.jpg";
-import Denver from "./Denver.jpg";
 import { Link } from 'react-router-dom';
 import Background from  '../BackgroundTable/components/Background';
 
-const styles = theme => ({
+const schoolInfo = [
+    {
+        city: 'Denver',
+        image: 'https://jela-website.s3.us-east-2.amazonaws.com/Denver.jpg',
+        title: 'University of Denver'
+    },
+    {
+        city: 'Boulder',
+        image: 'https://jela-website.s3.us-east-2.amazonaws.com/Boulder.jpg',
+        title: 'University of Colorado Boulder'
+    },
+    {
+        city: 'Mendoza',
+        image: 'https://jela-website.s3.us-east-2.amazonaws.com/Mendoza.jpg',
+        title: 'Universidad Nacional de Cuyo'
+    }
+
+];
+
+const useStyles = makeStyles(theme => ({
     main: {
         width: '100%',
         fontFamily: "Courier new",
@@ -176,45 +191,39 @@ const styles = theme => ({
             width: '45%',
         },
     }
-})
+}));
 
-class MainPage extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            hoverMendoza: false,
-            hoverBoulder: false,
-            hoverDenver: false,
+const MainPage = () => {
+    const classes = useStyles();
+
+    const [hoverMendoza, setMendoza] = useState(false)
+    const [hoverBoulder, setBoulder] = useState(false)
+    const [hoverDenver, setDenver] = useState(false)
+
+    const mouseOver = (input) => {
+        if(input === 'boulder'){
+            setBoulder(true)
+        }
+        else if(input === 'mendoza'){
+            setMendoza(true)
+        }
+        if(input === 'denver'){
+            setDenver(true)
         }
     }
 
-    mouseOver = (input) => {
+    const mouseOut = (input) => {
         if(input ==='boulder'){
-            this.setState({hoverBoulder: true})
+            setBoulder(false)
         }
         else if(input ==='mendoza'){
-            this.setState({hoverMendoza: true})
+            setMendoza(false)
         }
         if(input ==='denver'){
-            this.setState({hoverDenver: true})
+            setDenver(false)
         }
     }
 
-    mouseOut = (input) => {
-        if(input ==='boulder'){
-            this.setState({hoverBoulder: false})
-        }
-        else if(input ==='mendoza'){
-            this.setState({hoverMendoza: false})
-        }
-        if(input ==='denver'){
-            this.setState({hoverDenver: false})
-        }
-    }
-
-
-    render() {
-      const { classes } = this.props;
         return (
             <div className={classes.main}>
                 <div className={classes.body}> 
@@ -229,18 +238,16 @@ class MainPage extends Component {
                             <div className={classes.rowTitle}>
                                 <div className={classes.titleText} >Academics</div>
                             </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('boulder')}} onMouseLeave={() => {this.mouseOut('boulder')}}>
-                                { this.state.hoverBoulder ? (<div className={classes.innerDivs}>University of Colorado Boulder</div>) : null }
-                                <img className={classes.photos} src={Boulder} alt="logo"/>
-                            </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('denver')}} onMouseLeave={() => {this.mouseOut('denver')}}>
-                                { this.state.hoverDenver ? (<div className={classes.innerDivs}>University of Denver</div>) : null }
-                                <img className={classes.photos} src={Denver} alt="logo"/>
-                            </div>
-                            <div className={classes.schools} onMouseOver={() => {this.mouseOver('mendoza')}} onMouseLeave={() => {this.mouseOut('mendoza')}}>
-                                { this.state.hoverMendoza ? (<div className={classes.innerDivs}>Universidad de Congreso</div>) : null }
-                                <img className={classes.photos} src={Mendoza} alt="logo"/>
-                            </div> 
+                            {
+                                schoolInfo.map((location, index) => {
+                                    return(
+                                        <div key={index} className={classes.schools} onMouseOver={() => {mouseOver(location.name)}} onMouseLeave={() => {mouseOut(location.name)}}>
+                                        { hoverBoulder ? (<div className={classes.innerDivs}>{location.title}</div>) : null }
+                                        <img className={classes.photos} src={location.image} alt={location.name}/>
+                                    </div>
+                                    )
+                                })
+                            }    
                         </div>
                     </Link>
                     <div>
@@ -255,11 +262,6 @@ class MainPage extends Component {
                 </div> 
             </div>
         )
-    }
 };
 
-MainPage.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-
-export default withStyles(styles)(MainPage);
+export default MainPage;
