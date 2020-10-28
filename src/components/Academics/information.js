@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from "@material-ui/core"
+import React, { useState } from 'react';
+import { makeStyles } from "@material-ui/core"
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
     schools: {
         fontSize: 32,
     },
@@ -81,62 +80,49 @@ const styles = theme => ({
     innerPs: {
        marginBottom: 0
     }
-})
+}));
 
-class AcademicPage extends Component {
-    flipStyles = () => {
-        console.log('inside flips')
-       this.state.side === 'left' ? this.setState({side: 'right'}) : this.setState({side: 'left'})
+const AcademicPage = ({content}) => {
+    const classes = useStyles();
+    let mapCount = 0;
+
+    const mapCounter = () => {
+        mapCount += 1
     }
 
-    render(){  
-        let mapCount = 0;
-        const { classes } = this.props;
-        const content = this.props.content;
-        //after each mapping, update count so sides are switched
-        const mapCounter = () => {
-            mapCount += 1
-        }
-        return (
-            <div>
-                {
-                    content.slice(0)
-                    .reverse()
-                    .map((schools, index) => (
-                        mapCount%2 === 0 ? (
-                                <div key={index} className={ classes.left }>
-                                    <div className={ classes.descriptionLeft }> { schools.description } </div>
-                                    <div className={ classes.leftTable }>
-                                        <p className={classes.schools}>{ schools.title } </p>
-                                            { 
-                                                (schools.classes).map(courses => <p className={classes.innerPs}>{ courses }</p> )
-                                            }
-                                    </div>
-                                    { mapCounter() } 
+    return (
+        <div>
+            {
+                content.map((schools, index) => (
+                    mapCount%2 === 0 ? (
+                            <div key={index} className={ classes.left }>
+                                <div className={ classes.descriptionLeft }> { schools.description } </div>
+                                <div className={ classes.leftTable }>
+                                    <p className={classes.schools}>{ schools.title } </p>
+                                        { 
+                                            (schools.classes).map(courses => <p className={classes.innerPs}>{ courses }</p> )
+                                        }
                                 </div>
-                            ) : 
-                            (
-                                <div key={index} className={ classes.right }>   
-                                    <div className={ classes.rightTable }>
-                                        <p className={classes.schools}>{ schools.title }</p>
-                                            { 
-                                                (schools.classes).map(courses => <p className={classes.innerPs}>{ courses }</p> )
-                                            }
-                                    </div>
-                                    <div className={ classes.descriptionRight }> { schools.description } </div>
-                                    { mapCounter() }
+                                { mapCounter() } 
+                            </div>
+                        ) : 
+                        (
+                            <div key={index} className={ classes.right }>   
+                                <div className={ classes.rightTable }>
+                                    <p className={classes.schools}>{ schools.title }</p>
+                                        { 
+                                            (schools.classes).map(courses => <p className={classes.innerPs}>{ courses }</p> )
+                                        }
                                 </div>
-                            )
+                                <div className={ classes.descriptionRight }> { schools.description } </div>
+                                { mapCounter() }
+                            </div>
                         )
-                    )   
-                }
-            </div>
-        );
-    }
+                    )
+                )   
+            }
+        </div>
+    );
 }
 
-AcademicPage.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(AcademicPage);
+export default AcademicPage;
