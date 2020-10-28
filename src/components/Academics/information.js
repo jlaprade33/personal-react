@@ -39,6 +39,9 @@ const useStyles = makeStyles(theme => ({
             marginLeft: '4%',
             marginTop: '4%'
         },
+         '&:hover': {
+            background: '#B5C4E2'
+        }
     },
     rightTable: {
         padding: '3% 2% 2% 3%', 
@@ -52,6 +55,9 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('sm')]:{
             width: '45%',
         },
+        '&:hover': {
+            background: '#d7e3f5'
+        }
     },
     descriptionLeft: {
         marginLeft: '5%',
@@ -100,7 +106,7 @@ const AcademicPage = ({content}) => {
                                 <div className={ classes.leftTable }>
                                     <p className={classes.schools}>{ schools.title } </p>
                                         { 
-                                            (schools.classes).map(courses => <p className={classes.innerPs}>{ courses }</p> )
+                                            schools.classes.map(courses => <p className={classes.innerPs}>{ courses }</p> )
                                         }
                                 </div>
                                 { mapCounter() } 
@@ -111,7 +117,7 @@ const AcademicPage = ({content}) => {
                                 <div className={ classes.rightTable }>
                                     <p className={classes.schools}>{ schools.title }</p>
                                         { 
-                                            (schools.classes).map(courses => <p className={classes.innerPs}>{ courses }</p> )
+                                            schools.classes.map(courses => <p className={classes.innerPs}>{ courses }</p> )
                                         }
                                 </div>
                                 <div className={ classes.descriptionRight }> { schools.description } </div>
