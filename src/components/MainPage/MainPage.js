@@ -201,7 +201,6 @@ const MainPage = () => {
     const [hoverDenver, setDenver] = useState(false)
 
     const hoverAction = (input, val) => {
-        console.log('val', input, val)
         switch(input){
             case 'Boulder':
                 setBoulder(val);
