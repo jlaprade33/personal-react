@@ -2,15 +2,18 @@ import React, { Component } from "react";
 import { withStyles, Button, Modal, TextField } from "@material-ui/core"
 import Feed from "./Feed";
 import PropTypes from 'prop-types';
-import Mendoza from "../MainPage/Mendoza.jpg"
-import Denver from "../MainPage/Denver.jpg"
-import ImageUploader from 'react-images-upload'
-import Ice from '../MainPage/ice.jpg'
+import ImageUploader from 'react-images-upload';
+
+const Ice = 'https://jela-website.s3.us-east-2.amazonaws.com/ice-1.jpg'
+const Denver = 'https://jela-website.s3.us-east-2.amazonaws.com/Denver.jpg'
+const Mendoza = 'https://jela-website.s3.us-east-2.amazonaws.com/Mendoza.jpg'
+const Boulder = 'https://jela-website.s3.us-east-2.amazonaws.com/Boulder.jpg'
 
 const generateKey = () => {
     return Math.random()*100
 }
 
+//sample to populate feed when opened
 const example = {
     user: {
         username: 'jlaprade',
@@ -21,6 +24,7 @@ const example = {
     id: generateKey()
 }
 
+//sample to populate feed when opened
 const example2 = {
     user: {
         username: 'antarctic123',
@@ -147,7 +151,7 @@ class Posts extends Component {
         this.state = {
             posts: [example, example2],
             user: "",
-            showModal: true,
+            showModal: false,
             userTyped: "",
             captionTyped: "",
             pictures: []
@@ -267,7 +271,7 @@ class Posts extends Component {
                                 buttonText='Choose image'
                                 className={classes.inputFile}
                                 onChange={this.onDrop}
-                                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
                                 maxFileSize={5242880}
                             />
                             <Button variant="contained" className={classes.submit} onClick={this.submitAll}>
@@ -291,7 +295,7 @@ class Posts extends Component {
                             key={post.id}
                         />
                     ))
-                }
+                } 
             </div>
         </div>
     );
