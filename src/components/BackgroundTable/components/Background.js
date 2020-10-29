@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { withStyles } from "@material-ui/core"
+import React, { useState, useLayoutEffect } from 'react';
+import { makeStyles } from "@material-ui/core"
 import PropTypes from 'prop-types';
 import backgroundInfo from '../information'
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   tableContainer: {
     width: '80%',
     display: 'table',
@@ -45,6 +45,28 @@ const styles = theme => ({
     fontWeight: 400,
     color: '#696969',
     minHeight: 110,
+    paddingBottom: 20
+  },
+  contentDescriptionLarge: {
+    width: '90%',
+    display: 'table-flex',
+    margin: 'auto',
+    textAlign: 'left',
+    fontSize: 18,
+    fontWeight: 400,
+    color: '#696969',
+    minHeight: 110,
+    paddingBottom: 20
+  },
+  contentDescriptionOuter: {
+    width: '90%',
+    display: 'table-flex',
+    margin: 'auto',
+    textAlign: 'left',
+    fontSize: 22,
+    fontWeight: 400,
+    color: '#696969',
+    minHeight: 350,
     paddingBottom: 20
   },
   buttonContainer: {
@@ -93,114 +115,97 @@ const styles = theme => ({
     width: "100%"
   },
   displayTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 600,
     color: '#696969',
   }
-})
+}));
 
-class Background extends Component {
-  state = {
-    title: 'My background',
-    content: ['Check out my a quick summary of my background by clicking through this table'],
-    width: 0,
-    index: 0
+const Background = () => {
+  const classes = useStyles();
+  const [title, setTitle] = useState(backgroundInfo[0].title);
+  const [width, setWidth] = useState(0);
+  const [globalIndex, setIndex] = useState(0);
+  const [content, setContent] = useState(backgroundInfo[0].display);
+
+  useLayoutEffect(() => {
+    const updateWidth = () => {
+      setWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', updateWidth);
+    updateWidth();
+    return () => window.removeEventListener('resize', updateWidth)
+  })
+
+  const updateContent = (index, inputArray) => {
+    setTitle(inputArray.title)
+    setContent(inputArray.display)
+    setIndex(index)
   }
 
-  componentDidMount(){
-    this.updateWindowWidth()
-    window.addEventListener('resize', this.updateWindowWidth)
-  }
-
-  componentWillUnmount(){
-    window.removeEventListener('resize', this.updateWindowWidth)
-  }
-
-  updateWindowWidth = () => {
-    this.setState({ width: window.innerWidth})
-  }
-
-  updateContent = (index, inputArray) => {
-    console.log("content", inputArray)
-    this.setState({
-      title: inputArray.title,
-      content: inputArray.display,
-      index
-    })
-  }
-
-  scroll = (side, array) => {
-    let currentIndex = this.state.index
+  const scroll = (side, array) => {
+    let currentIndex = globalIndex
     if(side === 'left'){
-      this.state.index > 0 ? this.updateContent(currentIndex - 1, array[currentIndex - 1]) : this.updateContent(currentIndex, array[currentIndex])
+      globalIndex > 0 ? updateContent(currentIndex - 1, array[currentIndex - 1]) : updateContent(currentIndex, array[currentIndex])
     }
     else {
-      this.state.index < 3 ? this.updateContent(currentIndex + 1, array[currentIndex + 1]) : this.updateContent(currentIndex, array[currentIndex])
+      globalIndex < 3 ? updateContent(currentIndex + 1, array[currentIndex + 1]) : updateContent(currentIndex, array[currentIndex])
     }
   }
 
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <div className={classes.tableContainer}>
-        <h2 className={classes.contentTitle}>{ this.state.title }</h2>
-        <div className={classes.contentDescription}>
-        { 
-          this.state.content.length > 1 ? (
-            <div>
-            {
-              this.state.content.map((descriptions, index) => {
-                if(typeof descriptions === 'object'){
-                  console.log('descriptions', descriptions, typeof descriptions)
-                  return (
-                    <div key={index} className={classes.innerContent}>
-                      <h3 className={classes.displayTitle}>{ descriptions.title }</h3>
-                      <p className={classes.contentDescription}>{ descriptions.display }</p>
-                    </div>
-                  )
-                }
-                else {
-                  console.log('descriptions', descriptions)
-                  return (
-                    <div key={index} className={classes.innerContent}>
-                      <p className={classes.contentDescription}>{ descriptions }</p>
-                    </div>
-                  )
-                }
-                })
-              
-               
-            }
-          </div> ) : this.state.content[0]
-        }
-        </div>
-        <div className={classes.contentContainer}>
+  return (
+    <div className={classes.tableContainer}>
+      <h2 className={classes.contentTitle}>{ title }</h2>
+      <div className={classes.contentDescriptionOuter}>
+      { 
+        content.length > 1 ? (
+          <div>
           {
-            this.state.width > 923 ? (
-            backgroundInfo.map((tableContent, index) => {
-              return (
-                <div  key={index} className={classes.buttonContainer}>
-                  <div className={this.state.index === index ? classes.buttonUnderline : classes.buttons} onClick={() => this.updateContent(index, backgroundInfo[index])}>{ tableContent.title }</div>
-                </div>
-              )
-            })
-            ) : (
-              <div className={classes.buttonContainer}>
-                <svg onClick={()=> this.scroll('left', backgroundInfo) } xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/> </svg> 
-                <p className={classes.oneButton}>{ backgroundInfo[this.state.index].title }</p>
-                <svg onClick={()=> this.scroll('right', backgroundInfo) } xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>
+            content.map((descriptions, index) => {
+              if(typeof descriptions === 'object'){
+                return (
+                  <div key={index} className={classes.innerContent}>
+                    <h3 className={classes.displayTitle}>{ descriptions.title }</h3>
+                    { descriptions.display ? <p className={classes.contentDescriptionLarge}>{ descriptions.display }</p> : null}
+                  </div>
+                )
+              }
+              else {
+                return (
+                  <div key={index} className={classes.innerContent}>
+                    <p className={classes.contentDescription}>{ descriptions }</p>
+                  </div>
+                )
+              }
+              })
+            
+              
+          }
+        </div> ) : content[0]
+      }
+      </div>
+      <div className={classes.contentContainer}>
+        {
+          width > 923 ? (
+          backgroundInfo.map((tableContent, index) => {
+            return (
+              <div  key={index} className={classes.buttonContainer}>
+                <div className={globalIndex === index ? classes.buttonUnderline : classes.buttons} onClick={() => updateContent(index, backgroundInfo[index])}>{ tableContent.title }</div>
               </div>
             )
-          }
-      </div>
+          })
+          ) : (
+            <div className={classes.buttonContainer}>
+              <svg onClick={()=> scroll('left', backgroundInfo) } xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/> </svg> 
+              <p className={classes.oneButton}>{ backgroundInfo[globalIndex].title }</p>
+              <svg onClick={()=> scroll('right', backgroundInfo) } xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>
+            </div>
+          )
+        }
     </div>
-    )
-  }
-}
-
-Background.propTypes = {
-  classes: PropTypes.object.isRequired,
+  </div>
+  )
+  
 };
 
-export default withStyles(styles)(Background);
+export default Background;
