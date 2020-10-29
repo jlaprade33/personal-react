@@ -1,13 +1,11 @@
-import React, { Component } from "react";
-import { withStyles, Button, Modal, TextField } from "@material-ui/core"
+import React, { useState, useEffect } from "react";
+import { makeStyles, Button, Modal, TextField } from "@material-ui/core"
 import Feed from "./Feed";
-import PropTypes from 'prop-types';
 import ImageUploader from 'react-images-upload';
 
-const Ice = 'https://jela-website.s3.us-east-2.amazonaws.com/ice-1.jpg'
-const Denver = 'https://jela-website.s3.us-east-2.amazonaws.com/Denver.jpg'
-const Mendoza = 'https://jela-website.s3.us-east-2.amazonaws.com/Mendoza.jpg'
-const Boulder = 'https://jela-website.s3.us-east-2.amazonaws.com/Boulder.jpg'
+const Ice = 'https://jela-website.s3.us-east-2.amazonaws.com/ice-1.jpg';
+const Denver = 'https://jela-website.s3.us-east-2.amazonaws.com/Denver.jpg';
+const Mendoza = 'https://jela-website.s3.us-east-2.amazonaws.com/Mendoza.jpg';
 
 const generateKey = () => {
     return Math.random()*100
@@ -20,7 +18,7 @@ const example = {
         avatar: Denver,
     },
     image: Mendoza,
-    caption: ' there is no place like home',
+    caption: ' Mendoza is pretty chill',
     id: generateKey()
 }
 
@@ -35,7 +33,7 @@ const example2 = {
     id: generateKey()
 }
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
     main: {
         backgroundColor: "#d7e3f0",
         margin:'auto',
@@ -143,106 +141,80 @@ const styles = theme => ({
         borderRadius: 10,
         marginTop: 10
     },
-})
+}));
 
-class Posts extends Component {
-    constructor() {
-        super();
-        this.state = {
-            posts: [example, example2],
-            user: "",
-            showModal: false,
-            userTyped: "",
-            captionTyped: "",
-            pictures: []
-        };
-    }
+const Posts = () => {
+    const classes = useStyles();
+    const [user, setUser] = useState('Welcome!');
+    const [posts, setPosts] = useState([example, example2]);
+    const [showModal, setShowModal] = useState(false);
+    const [userTyped, setTyped] = useState("");
+    const [captionTyped, setCaption] = useState("");
+    const [pictures, setPictures] = useState([]);
 
-    //set post bar at top to greeting
-    componentDidMount() {
-        let user = this.state.user
-        if(user.length < 1){
-            this.setState({ user: "Welcome! " });
-        }
-    }
-
-    generateKey = () => {
+    const generateKey = () => {
         return Math.random()*100
     }
 
     //opens modal
-    openModal = () => {
-        this.setState({
-            showModal: true
-        })
+    const openModal = () => {
+        setShowModal(true)
     }
 
     //closes post modal
-    closeModal = () => {
-        this.setState({
-            showModal: false
-        })
+    const closeModal = () => {
+        setShowModal(false)
     }
 
     //sets username inside of modal
-    username = event => {
-       this.setState({
-           userTyped: event.target.value
-       })
+    const username = event => {
+        setTyped(event.target.value)
     }
 
     //sets caption inside of modal
-    caption = event => {
-        this.setState({
-            captionTyped: ` ${event.target.value}`
-        })
+    const caption = event => {
+        setCaption(` ${event.target.value}`)
     }
 
     //sets state for user post
-    onDrop = (picture) => {
-        this.setState({
-            pictures: URL.createObjectURL(picture[0])
-        });
+    const onDrop = (picture) => {
+        setPictures(URL.createObjectURL(picture[0]))
     }
 
     //post happens here
-    submitAll = () => {
-        let username = this.state.userTyped;
-        let caption = this.state.captionTyped;
-        let otherPosts = this.state.posts
+    const submitAll = () => {
+        let username = userTyped;
+        let caption = captionTyped;
+        let otherPosts = posts
         //data object for post
+
         const newPost = {
             user: {
                 username,
                 avatar: Denver,
             },
-            image: this.state.pictures,
+            image: pictures,
             caption,
             id: generateKey()
         }
         //makes sure there is a caption and username to post
         if(caption.length > 1 && username.length > 1){
-            this.setState({
-                posts: [...otherPosts, newPost],
-                user: `Welcome, ${username}`,
-                showModal: false
-            })
+            setPosts([...otherPosts, newPost]);
+            setUser(`Welcome, ${username}`)
+            setShowModal(false)
         }
     }
-
-    render() {
-    const { classes } = this.props;
 
     return (
         <div className={classes.main}>
             <div className={classes.postBar}>
-                <div className={classes.postUser}>{this.state.user}</div>
-                <Button className={classes.postButton} onClick={this.openModal}>Create a post</Button>
+                <div className={classes.postUser}>{user}</div>
+                <Button className={classes.postButton} onClick={openModal}>Create a post</Button>
                 <Modal
                     aria-labelledby="contained-modal-title-lg"
                     className={classes.modal}
-                    open={this.state.showModal}
-                    onClose={this.closeModal}
+                    open={showModal}
+                    onClose={closeModal}
                 >
                     <div className={classes.popup}>
                         <div className={classes.userInput}>
@@ -251,7 +223,7 @@ class Posts extends Component {
                             label="Username"
                             defaultValue=""
                             margin="normal"
-                            onChange={this.username}
+                            onChange={username}
                             />
                         </div>
                         <div className={classes.userCaption}>
@@ -262,7 +234,7 @@ class Posts extends Component {
                                 rows="4"
                                 defaultValue=""
                                 variant="filled"
-                                onChange={this.caption}
+                                onChange={caption}
                             />
                         </div>
                         <div>
@@ -270,11 +242,11 @@ class Posts extends Component {
                                 withIcon={true}
                                 buttonText='Choose image'
                                 className={classes.inputFile}
-                                onChange={this.onDrop}
+                                onChange={onDrop}
                                 imgExtension={['.jpg', '.gif', '.png', '.gif', '.jpeg']}
                                 maxFileSize={5242880}
                             />
-                            <Button variant="contained" className={classes.submit} onClick={this.submitAll}>
+                            <Button variant="contained" className={classes.submit} onClick={submitAll}>
                                 Submit
                             </Button>
                         </div>
@@ -283,7 +255,7 @@ class Posts extends Component {
             </div>
             <div className={classes.posts}> 
                 {
-                    this.state.posts
+                    posts
                     .slice(0)
                     .reverse()
                     .map(post => (
@@ -299,11 +271,7 @@ class Posts extends Component {
             </div>
         </div>
     );
-  }
+  
 }
 
-Posts.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Posts)
+export default Posts;
