@@ -126,10 +126,10 @@ const useStyles = makeStyles(theme => ({
         flexFlow: 'row',
         flexWrap: 'wrap',
         margin: 'auto',
-        boxShadow: '2px 2px 2px 0px gray',
+        boxShadow: '2px 1px 0px gray',
         fontSize: 18,
         textAlign: 'center',
-        borderRadius: 20,
+        borderRadius: 10,
         padding: '4% 2% 2% 2%', 
         backgroundColor: "#B5C4E2",      
         [theme.breakpoints.down('xs')]:{
@@ -149,6 +149,7 @@ const useStyles = makeStyles(theme => ({
     extrasText: {
         fontSize: 50,
         fontWeight: 500,
+        paddingBottom: 40,
         color: 'black',
         textAlign: 'center',
         width: '100%',
@@ -252,7 +253,7 @@ const MainPage = () => {
                             <div className={classes.extrasText} >Extras</div>
                         </div>
                         <Link className={classes.link} to='/podcasts' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out my favorite podcasts...</Button></Link>
-                        <Link className={classes.link} to='/feed' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Try out this feed demo... </Button></Link>
+                        <a className={classes.link} href='https://github.com/jlaprade33/personal-react/tree/dev' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out the repo for this website... </Button></a>
                     </div>
                 </div>
             </div> 
