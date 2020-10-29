@@ -27,8 +27,8 @@ const backgroundInfo = [
     {
         title: "Work Experience",
         display: [
-            "Application Developer, Front End, Zayo Group April 2020-current.",
-            "Jr. Application Developer, Front End, Zayo Group May 2019-April 2020.", 
+            "Application Developer, Front End, Zayo Group: April 2020-current.",
+            "Jr. Application Developer, Front End, Zayo Group: May 2019-April 2020.", 
             "Role: Lead developer for zayo.com, maintainer for zayo's private component library."
         ]
     },
@@ -45,7 +45,7 @@ const backgroundInfo = [
             },
             {
                 title: 'Internal Contact Merge App',
-                display: 'Created a React app for merging contacts from our client database. I created a UI that allows users to change/update contacts, and I used Express to send data to and from out API.'
+                display: 'Created a React app for merging contacts from our client database. I created a UI that allows users to change/update contacts, and I used Express to send data to and from our API.'
             },
             {
                 title: 'Wordpress CMS Management',
