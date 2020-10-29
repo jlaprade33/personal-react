@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from "@material-ui/core"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AcademicPage from '../information'
-import content from './data';
+import content from '../data';
 
 const useStyles = makeStyles(theme => ({
     main: {
