@@ -8,6 +8,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.10.0",
     "bootstrap": "^4.5.3",
+    "caniuse-lite": "^1.0.30001151",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "graphql-tag": "^2.11.0",
