@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from "@material-ui/core";
 import PropTypes from 'prop-types';
 import { HashRouter, Route, Link } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const styles = {
   header: {
@@ -26,33 +27,39 @@ class App extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <HashRouter>
-          <AppBar className={classes.header}>
-            <Toolbar>
-              <Link to='/' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Home</Button></Link>
-              <Link to='/academics' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Academics</Button></Link>
-              <Link to='/feed' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Test-Feed</Button></Link>
-              {/* <Link to='/contact' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Contact</Button></Link> */}
-            </Toolbar>
-          </AppBar>
-        <div>
-        <Route path='/' exact render={() => 
-          <MainPage /> }
-        />
-        <Route path='/academics' render={() => 
-          <Academics /> }
-        />
-        <Route path='/podcasts' render={() => 
-          <Podcasts /> }
-        />
-        <Route path='/feed' render={() => 
-          <Posts /> }
-        />
-         {/* <Route path='/contact' render={() => 
-          <Contact /> }
-        /> */}
-       </div>
-      </HashRouter>
+      <HelmetProvider>
+        <HashRouter>
+          <Helmet id='test'>
+            <meta property='og:title' content={'Jeff LaPrade'} />
+            <meta property='og:description' content={'My personal website'} />
+          </Helmet>
+            <AppBar className={classes.header}>
+              <Toolbar>
+                <Link to='/' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Home</Button></Link>
+                <Link to='/academics' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Academics</Button></Link>
+                <Link to='/feed' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Test-Feed</Button></Link>
+                {/* <Link to='/contact' style={{textDecoration: 'none', color: 'white'}}><Button className={classes.buttons}>Contact</Button></Link> */}
+              </Toolbar>
+            </AppBar>
+          <div>
+          <Route path='/' exact render={() => 
+            <MainPage /> }
+          />
+          <Route path='/academics' render={() => 
+            <Academics /> }
+          />
+          <Route path='/podcasts' render={() => 
+            <Podcasts /> }
+          />
+          <Route path='/feed' render={() => 
+            <Posts /> }
+          />
+          {/* <Route path='/contact' render={() => 
+            <Contact /> }
+          /> */}
+        </div>
+        </HashRouter>
+      </HelmetProvider>
     )
   }
 };
