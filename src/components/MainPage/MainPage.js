@@ -235,7 +235,7 @@ const MainPage = () => {
                             <div className={classes.extrasText} >Extras</div>
                         </div>
                         <Link className={classes.link} to='/podcasts' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out my favorite podcasts...</Button></Link>
-                        <a className={classes.link} href='https://github.com/jlaprade33/personal-react/tree/dev' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out the repo for this website... </Button></a>
+                        <a className={classes.link} href='https://github.com/jlaprade33/personal-react/tree/dev' target="_blank" style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out the repo for this website... </Button></a>
                     </div>
                 </div>
             </div> 
