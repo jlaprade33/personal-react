@@ -165,7 +165,7 @@ const useStyles = makeStyles(theme => ({
             paddingBottom: 10
         },
     },
-    link: {
+    pageLink: {
         [theme.breakpoints.down('sm')]:{
             width: '100%',
         },
@@ -234,8 +234,8 @@ const MainPage = () => {
                         <div className={classes.rowTitle}>
                             <div className={classes.extrasText} >Extras</div>
                         </div>
-                        <Link className={classes.link} to='/podcasts' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out my favorite podcasts...</Button></Link>
-                        <a className={classes.link} href='https://github.com/jlaprade33/personal-react/tree/dev' target="_blank" style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out the repo for this website... </Button></a>
+                        <Link className={classes.pageLink} to='/podcasts' style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out my favorite podcasts...</Button></Link>
+                        <a className={classes.pageLink} href='https://github.com/jlaprade33/personal-react/tree/dev' target="_blank" style={{textDecoration: 'none', color:"black"}}><Button className={classes.extraDivs}>Check out the repo for this website... </Button></a>
                     </div>
                 </div>
             </div> 

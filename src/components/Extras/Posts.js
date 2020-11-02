@@ -18,7 +18,7 @@ const example = {
         avatar: Denver,
     },
     image: Mendoza,
-    caption: ' Mendoza is pretty chill',
+    caption: ' View from my classroom in Mendoza',
     id: generateKey()
 }
 
@@ -29,7 +29,7 @@ const example2 = {
         avatar: Mendoza,
     },
     image: Ice,
-    caption: ' Ice ice baby',
+    caption: ' Ice floating around in Antarctica',
     id: generateKey()
 }
 
