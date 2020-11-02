@@ -89,6 +89,7 @@ const useStyles = makeStyles(theme => ({
     width: "fit-content",
     display: 'table-flex',
     margin: 'auto',
+    cursor: 'pointer',
     textAlign: 'center',
     minHeight: 50,
     paddingTop: 10
@@ -99,6 +100,7 @@ const useStyles = makeStyles(theme => ({
     margin: 'auto',
     textAlign: 'center',
     minHeight: 50,
+    cursor: 'pointer',
     paddingTop: 10,
     borderBottom: '3px solid #25274b'
   },

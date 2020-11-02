@@ -12,6 +12,7 @@ import { withStyles } from "@material-ui/core";
 import PropTypes from 'prop-types';
 import { HashRouter, Route, Link } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Footer from './components/MainPage/Footer';
 
 const styles = {
   header: {
@@ -58,6 +59,7 @@ class App extends Component {
             <Contact /> }
           /> */}
         </div>
+        <Footer />
         </HashRouter>
       </HelmetProvider>
     )
